@@ -29,10 +29,9 @@ if ( is_array( $items ) && count( $items ) ) { ?>
 		<?php if ( 'image' == $settings->select_type ) { ?>
 
 			<div class="vc-row-content-image">
-				<span>
-					
+
 					<img class="vc-row-image-style" src="<?php echo $settings->image_field_src; ?>">
-				</span>
+
 			</div>
 
 		<?php	} ?>
