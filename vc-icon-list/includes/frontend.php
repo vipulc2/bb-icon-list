@@ -10,50 +10,69 @@
  * Example:
  */
 
-
 $items = $settings->list_field;
-?>
 
-<ul class="icon-list-item" style="list-style: none;">
-	<?php if ( is_array( $items ) && count( $items ) ) { ?>
+if ( is_array( $items ) && count( $items ) ) { ?>
 
-		<?php for ( $i = 0; $i < count( $items ); $i++ ) { ?>
+		<div class="vc-module-column">
 
-			<li class="list-item">
+	<?php for ( $i = 0; $i < count( $items ); $i++ ) { ?>
 
-				<?php if ( 'icon' == $settings->select_type ) { ?>
-					<span class="<?php echo $settings->icon_field; ?>  icon-style"></span>
-			<?php	} ?>
-				<?php if ( 'image' == $settings->select_type ) { ?>
-					<span class="img-space">
-						<img class="image-style" src="<?php echo $settings->image_field_src; ?>">
-					</span>
-			<?php	} ?>
-				<?php if ( 'number' == $settings->select_type ) { ?>
-					<span class="number-style">
-					<?php
+			<div class="vc-module-row">
 
-					if ( $num == '' ) {
-						$num = $settings->number_field;
-						echo $num;
-						$num++;
-					} else {
-						echo $num;
-						$num++;
-					}
+		<?php if ( 'icon' == $settings->select_type ) { ?>
 
-					?>
-					</span>
-			<?php	} ?>
+			<div class="vc-row-content-icon <?php echo $settings->icon_field; ?>"></div>
+
+		<?php	} ?>
+
+		<?php if ( 'image' == $settings->select_type ) { ?>
+
+			<div class="vc-row-content-image">
+				<span>
+					
+					<img class="vc-row-image-style" src="<?php echo $settings->image_field_src; ?>">
+				</span>
+			</div>
+
+		<?php	} ?>
+
+		<?php if ( 'number' == $settings->select_type ) { ?>
+
+			<div class="vc-row-content-number vc-row-number-style">
+			<?php
+
+			if ( $num == '' ) {
+				$num = $settings->number_field;
+				echo $num;
+				$num++;
+			} else {
+				echo $num;
+				$num++;
+			}
+
+			?>
+			</div>
+			<?php } ?>
 
 
-				<span class="txt-style"><?php echo $items[ $i ]; ?></span>
+		<div class="vc-row-content-item">
+
+		
+				
+				<?php echo $items[ $i ]; ?>
 
 
+		</div>
 
-			</li>
+		</div>
 
+		
+		
 		<?php } ?>
-
-	<?php } ?>
-	</ul>
+		
+	</div>
+		
+		
+		
+<?php } ?>

@@ -9,7 +9,7 @@ class VIconModule extends FLBuilderModule {
 	public function __construct() {
 		parent::__construct(
 			array(
-				'name'            => __( 'V Icon List', 'fl-builder' ),
+				'name'            => __( 'VC Icon List', 'fl-builder' ),
 				'description'     => __( 'A module to add icon list', 'fl-builder' ),
 				'group'           => __( 'Icon List', 'fl-builder' ),
 				'category'        => __( 'My Category', 'fl-builder' ),
@@ -23,9 +23,6 @@ class VIconModule extends FLBuilderModule {
 		);
 	}
 
-	public function example_method() {
-		return 'Hello World!';
-	}
 }
 
 FLBuilder::register_module(
@@ -34,8 +31,8 @@ FLBuilder::register_module(
 		'general-icon'  => array(
 			'title'    => __( 'Content', 'fl-builder' ),
 			'sections' => array(
-				'content-icon-section' => array(
-					'title'  => __( 'Content Icon Section', 'fl-builder' ),
+				'content_type_selection_section' => array(
+					'title'  => __( 'Content Selection Section', 'fl-builder' ),
 					'fields' => array(
 						'select_type'  => array(
 							'type'    => 'select',
@@ -48,7 +45,7 @@ FLBuilder::register_module(
 							),
 							'toggle'  => array(
 								'icon'   => array(
-									'fields'   => array( 'icon_field', 'h_space' ),
+									'fields'   => array( 'icon_field', 'h_space_icon' ),
 									'sections' => array( 'spacing_section', 'icon_style_section' ),
 									'tabs'     => array( 'content_style' ),
 								),
@@ -84,7 +81,7 @@ FLBuilder::register_module(
 					),
 				),
 
-				'content-list-section' => array(
+				'content_list_section' => array(
 					'title'  => __( 'Content List Section', 'fl-builder' ),
 					'fields' => array(
 						'list_field' => array(
@@ -112,11 +109,11 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'margin-bottom',
-								'selector' => '.list-item',
+								'selector' => '.vc-module-container',
 								'unit'     => 'px',
 							),
 						),
-						'h_space'       => array(
+						'h_space_icon'       => array(
 							'type'        => 'unit',
 							'label'       => 'Space Between Text and Icon',
 							'description' => 'px',
@@ -124,7 +121,7 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'margin-right',
-								'selector' => '.icon-style',
+								'selector' => '.vc-row-content-icon',
 								'unit'     => 'px',
 							),
 						),
@@ -137,7 +134,7 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'margin-right',
-								'selector' => '.img-space',
+								'selector' => '.vc-row-content-image',
 								'unit'     => 'px',
 							),
 						),
@@ -150,7 +147,7 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'margin-right',
-								'selector' => '.number-style',
+								'selector' => '.vc-row-content-number',
 								'unit'     => 'px',
 							),
 						),
@@ -170,7 +167,7 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.icon-style',
+								'selector' => '.vc-row-content-icon',
 								'property' => 'background-color',
 							),
 						),
@@ -183,7 +180,7 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.icon-style',
+								'selector' => '.vc-row-content-icon',
 								'property' => 'color',
 							),
 
@@ -193,12 +190,12 @@ FLBuilder::register_module(
 							'type'        => 'unit',
 							'label'       => 'Icon Size',
 							'description' => 'px',
-							'default'     => 18,
+							'default'     => 22,
 							'slider'      => true,
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'font-size',
-								'selector' => '.icon-style',
+								'selector' => '.vc-row-content-icon',
 								'unit'     => 'px',
 							),
 						),
@@ -212,7 +209,7 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'padding',
-								'selector' => '.icon-style',
+								'selector' => 'vc-row-content-icon',
 								'unit'     => 'px',
 							),
 						),
@@ -223,7 +220,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.icon-style',
+								'selector' => '.vc-row-content-icon',
 							),
 						),
 					),
@@ -243,7 +240,7 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.img-space',
+								'selector' => '.vc-row-image-style',
 								'property' => 'background-color',
 							),
 						),
@@ -253,12 +250,12 @@ FLBuilder::register_module(
 							'type'        => 'unit',
 							'label'       => 'Image Width',
 							'description' => 'px',
-							'default'     => 150,
+							'default'     => 200,
 							'slider'      => true,
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'width',
-								'selector' => '.image-style',
+								'selector' => '.vc-row-image-style',
 								'unit'     => 'px',
 							),
 						),
@@ -268,12 +265,12 @@ FLBuilder::register_module(
 							'type'        => 'unit',
 							'label'       => 'Image Height',
 							'description' => 'px',
-							'default'     => 150,
+							'default'     => 200,
 							'slider'      => true,
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'height',
-								'selector' => '.image-style',
+								'selector' => '.vc-row-image-style',
 								'unit'     => 'px',
 							),
 						),
@@ -288,7 +285,7 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'padding',
-								'selector' => '.img-space',
+								'selector' => '.vc-row-image-style',
 								'unit'     => 'px',
 							),
 						),
@@ -300,7 +297,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.image-style',
+								'selector' => '.vc-row-image-style',
 							),
 						),
 					),
@@ -319,7 +316,7 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.number-style',
+								'selector' => '.vc-row-number-style',
 								'property' => 'background-color',
 							),
 						),
@@ -333,7 +330,7 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.number-style',
+								'selector' => '.vc-row-number-style',
 								'property' => 'color',
 							),
 
@@ -347,7 +344,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.number-style',
+								'selector' => '.vc-row-number-style',
 							),
 						),
 
@@ -361,7 +358,7 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'padding',
-								'selector' => '.number-style',
+								'selector' => '.vc-row-number-style',
 								'unit'     => 'px',
 							),
 						),
@@ -373,7 +370,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.number-style',
+								'selector' => '.vc-row-number-style',
 							),
 						),
 					),
@@ -390,7 +387,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.txt-style',
+								'selector' => '.vc-row-content-item',
 							),
 						),
 
@@ -403,7 +400,7 @@ FLBuilder::register_module(
 							'preview'    => array(
 								'type'     => 'css',
 								'property' => 'color',
-								'selector' => '.txt-style',
+								'selector' => '.vc-row-content-item',
 
 							),
 
