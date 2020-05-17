@@ -1,11 +1,34 @@
 <?php
+/**
+ * Summary File Contains Class for Beaver Builder custom Icon List Module
+ *
+ * Description. Contains class for vc-icon-list custom module.
+ *
+ * @link URL
+ *
+ * @package vc-icon-list
+ *
+ * @since 1.0.0
+ */
 
-// class VIconModule {
-
-// }
-
+/**
+ * Summary. VIconModule Class inherits from Beaver Builder Class
+ *
+ * Description The class that extends to Beaver Builder Class for VC Icon List.
+ *
+ * @since 1.0.0
+ */
 class VIconModule extends FLBuilderModule {
 
+	/**
+	 * Summary. function that defines the name, group of module
+	 *
+	 * Description This function sets the name, group, category, directory of the custom module.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @method __construct
+	 */
 	public function __construct() {
 		parent::__construct(
 			array(
@@ -24,36 +47,39 @@ class VIconModule extends FLBuilderModule {
 	}
 
 }
-
+// Registeration of the module.
 FLBuilder::register_module(
 	'VIconModule',
 	array(
 		'general-icon'  => array(
-			'title'    => __( 'Content', 'fl-builder' ),
+			'title'    => __( 'Content', 'fl-builder' ), // Declaring a title for the first tab.
 			'sections' => array(
 				'content_type_selection_section' => array(
-					'title'  => __( 'Content Selection Section', 'fl-builder' ),
+					'title'  => __( 'Content Selection Section', 'fl-builder' ), // Section declaration.
 					'fields' => array(
 						'select_type'  => array(
 							'type'    => 'select',
-							'label'   => __( 'Select List Type', 'fl-builder' ),
+							'label'   => __( 'Select List Type', 'fl-builder' ), // First Field.
 							'default' => 'icon',
 							'options' => array(
-								'icon'   => __( 'Icon', 'fl-builder' ),
-								'image'  => __( 'Image', 'fl-builder' ),
-								'number' => __( 'Number', 'fl-builder' ),
+								'icon'   => __( 'Icon', 'fl-builder' ), // Icon Selection.
+								'image'  => __( 'Image', 'fl-builder' ), // Image Selection.
+								'number' => __( 'Number', 'fl-builder' ), // Number Selection.
 							),
+							// Toggle option to set specific fields and sections for Icon Selection.
 							'toggle'  => array(
 								'icon'   => array(
 									'fields'   => array( 'icon_field', 'h_space_icon' ),
 									'sections' => array( 'spacing_section', 'icon_style_section' ),
 									'tabs'     => array( 'content_style' ),
 								),
+								// Toggle option to set specific fields and sections for Image Selection.
 								'image'  => array(
 									'fields'   => array( 'image_field', 'h_space_image' ),
 									'sections' => array( 'spacing_section', 'image_style_section' ),
 									'tabs'     => array( 'content_style' ),
 								),
+								// Toggle option to set specific fields and sections for Number Selection.
 								'number' => array(
 									'fields'   => array( 'number_field', 'h_space_number' ),
 									'sections' => array( 'spacing_section', 'number_style_section' ),
@@ -61,27 +87,30 @@ FLBuilder::register_module(
 								),
 							),
 						),
+						// The Field to select the icons.
 						'icon_field'   => array(
 							'type'        => 'icon',
 							'label'       => __( 'Select Icon', 'fl-builder' ),
 							'show_remove' => true,
 						),
+						// The Field to select the images.
 						'image_field'  => array(
 							'type'        => 'photo',
 							'label'       => __( 'Select Image', 'fl-builder' ),
 							'show_remove' => true,
 						),
+						// The Field to type the Number.
 						'number_field' => array(
 							'type'      => 'text',
 							'label'     => __( 'Enter Starting Number', 'fl-builder' ),
 							'default'   => '1',
-							'maxlength' => '3',
+							'maxlength' => '2',
 							'size'      => '3',
 						),
 					),
 				),
-
-				'content_list_section' => array(
+				// List Content for List Items.
+				'content_list_section'           => array(
 					'title'  => __( 'Content List Section', 'fl-builder' ),
 					'fields' => array(
 						'list_field' => array(
@@ -97,11 +126,11 @@ FLBuilder::register_module(
 		'content_style' => array(
 			'title'    => __( 'Style', 'fl-builder' ),
 			'sections' => array(
-				// Spacing section for Icon. Keeping v_height for all.
+				// Spacing section for Icon. Keeping v_height for all List Items the same.
 				'spacing_section'      => array(
 					'title'  => __( 'Spacing', 'fl-builder' ),
 					'fields' => array(
-						'v_height'      => array(
+						'v_height'       => array(
 							'type'        => 'unit',
 							'label'       => 'List Item Height',
 							'description' => 'px',
@@ -109,11 +138,11 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'margin-bottom',
-								'selector' => '.vc-module-container',
+								'selector' => '.vc-module-row',
 								'unit'     => 'px',
 							),
 						),
-						'h_space_icon'       => array(
+						'h_space_icon'   => array(
 							'type'        => 'unit',
 							'label'       => 'Space Between Text and Icon',
 							'description' => 'px',
@@ -126,15 +155,15 @@ FLBuilder::register_module(
 							),
 						),
 
-						'h_space_image' => array(
+						'h_space_image'  => array(
 							'type'        => 'unit',
 							'label'       => 'Space Between Text and Image',
 							'description' => 'px',
 							'slider'      => true,
 							'preview'     => array(
 								'type'     => 'css',
-								'property' => 'margin-right',
-								'selector' => '.vc-row-content-image',
+								'property' => 'padding-left',
+								'selector' => '.vc-row-content-item',
 								'unit'     => 'px',
 							),
 						),
@@ -200,19 +229,19 @@ FLBuilder::register_module(
 							),
 						),
 
-						'icon_padding'     => array(
-							'type'        => 'unit',
-							'label'       => 'Icon Padding',
-							'description' => 'px',
-							'default'     => 0,
-							'slider'      => true,
-							'preview'     => array(
-								'type'     => 'css',
-								'property' => 'padding',
-								'selector' => 'vc-row-content-icon',
-								'unit'     => 'px',
-							),
-						),
+						// 'icon_padding'     => array(
+						// 'type'        => 'unit',
+						// 'label'       => 'Icon Padding',
+						// 'description' => 'px',
+						// 'default'     => 0,
+						// 'slider'      => true,
+						// 'preview'     => array(
+						// 'type'     => 'css',
+						// 'property' => 'padding',
+						// 'selector' => '.vc-row-content-icon',
+						// 'unit'     => 'px',
+						// ),
+						// ),
 
 						'icon_border'      => array(
 							'type'       => 'border',
@@ -229,7 +258,7 @@ FLBuilder::register_module(
 
 
 				// Section for Image Styling.
-				'image_style_section'   => array(
+				'image_style_section'  => array(
 					'title'  => __( 'Image Styling', 'fl-builder' ),
 					'fields' => array(
 						'background_color_image' => array(
@@ -240,13 +269,13 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.vc-row-image-style',
+								'selector' => '.vc-row-content-image',
 								'property' => 'background-color',
 							),
 						),
 
 						// Image Width Field.
-						'image_width'        => array(
+						'image_width'            => array(
 							'type'        => 'unit',
 							'label'       => 'Image Width',
 							'description' => 'px',
@@ -255,13 +284,13 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'width',
-								'selector' => '.vc-row-image-style',
+								'selector' => '.vc-row-content-image',
 								'unit'     => 'px',
 							),
 						),
 
 						// Image Height Field.
-						'image_height'        => array(
+						'image_height'           => array(
 							'type'        => 'unit',
 							'label'       => 'Image Height',
 							'description' => 'px',
@@ -270,34 +299,34 @@ FLBuilder::register_module(
 							'preview'     => array(
 								'type'     => 'css',
 								'property' => 'height',
-								'selector' => '.vc-row-image-style',
+								'selector' => '.vc-row-content-image',
 								'unit'     => 'px',
 							),
 						),
 
 						// Image Padding Field.
-						'image_padding'     => array(
-							'type'        => 'unit',
-							'label'       => 'Image Padding',
-							'description' => 'px',
-							'default'     => 0,
-							'slider'      => true,
-							'preview'     => array(
-								'type'     => 'css',
-								'property' => 'padding',
-								'selector' => '.vc-row-image-style',
-								'unit'     => 'px',
-							),
-						),
+						// 'image_padding'          => array(
+						// 'type'        => 'unit',
+						// 'label'       => 'Image Padding',
+						// 'description' => 'px',
+						// 'default'     => 0,
+						// 'slider'      => true,
+						// 'preview'     => array(
+						// 'type'     => 'css',
+						// 'property' => 'padding',
+						// 'selector' => '.vc-row-content-image',
+						// 'unit'     => 'px',
+						// ),
+						// ),
 
 						// Image Border Field.
-						'image_border'      => array(
+						'image_border'           => array(
 							'type'       => 'border',
 							'label'      => 'Border',
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.vc-row-image-style',
+								'selector' => '.vc-row-content-image',
 							),
 						),
 					),
@@ -305,7 +334,7 @@ FLBuilder::register_module(
 
 
 				// Section for Number Styling.
-				'number_style_section'   => array(
+				'number_style_section' => array(
 					'title'  => __( 'Number Styling', 'fl-builder' ),
 					'fields' => array(
 						'background_color_number' => array(
@@ -316,13 +345,13 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.vc-row-number-style',
+								'selector' => '.vc-row-content-number',
 								'property' => 'background-color',
 							),
 						),
 
 						// Number Color Field.
-						'num_color'       => array(
+						'num_color'               => array(
 							'type'       => 'color',
 							'label'      => __( 'Number Color', 'fl-builder' ),
 							'default'    => '',
@@ -330,7 +359,7 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.vc-row-number-style',
+								'selector' => '.vc-row-content-number',
 								'property' => 'color',
 							),
 
@@ -338,39 +367,39 @@ FLBuilder::register_module(
 
 
 						// Number Typography Field.
-						'num_typography' => array(
+						'num_typography'          => array(
 							'type'       => 'typography',
 							'label'      => 'Number Typography',
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.vc-row-number-style',
+								'selector' => '.vc-row-content-number',
 							),
 						),
 
 						// Number Padding Field.
-						'num_padding'     => array(
+						'num_width'               => array(
 							'type'        => 'unit',
-							'label'       => 'Number Padding',
+							'label'       => 'Number Width',
 							'description' => 'px',
 							'default'     => 0,
 							'slider'      => true,
 							'preview'     => array(
 								'type'     => 'css',
-								'property' => 'padding',
-								'selector' => '.vc-row-number-style',
+								'property' => 'width',
+								'selector' => '.vc-row-content-number',
 								'unit'     => 'px',
 							),
 						),
 
 						// Number Border Field.
-						'number_border'      => array(
+						'number_border'           => array(
 							'type'       => 'border',
 							'label'      => 'Border',
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.vc-row-number-style',
+								'selector' => '.vc-row-content-number',
 							),
 						),
 					),

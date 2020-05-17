@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
 }
 
+/* The Column that contains the first list type element (icon, image, number) */
 .vc-module-column {
   display: flex;
   flex-direction: column;
@@ -10,6 +11,7 @@ body {
   align-content: center;
 }
 
+/* Row that contains the Icon/Image/Number and the List Item Content */
 .vc-module-row {
   display: flex;
   flex-direction: row;
@@ -18,20 +20,23 @@ body {
   align-content: center;
 }
 
-.vc-row-content-item{
+/* Content List Item Properties */
+.vc-row-content-item {
 
-  /* width: calc( 100% - 200px ); */
+  width: calc( 100% - 200px );
 }
 
-/* .vc-row-image-style{
-  width: 200px
-  height: 200px;
-} */
-
-.vc-row-content-image{
+/* Image Properties */
+.vc-row-content-image {
   width: 200px;
   height: 200px;
-  /* /* background-size: cover;  */
   background-repeat:no-repeat;
   background-size: 100% 100% !important;
+ }
+
+/* Number Properties */
+ .vc-row-content-number {
+  text-align: center;
+  width: 10%;
+  height: 10%;
  }

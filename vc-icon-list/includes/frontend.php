@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file should be used to render each module instance.
- * You have access to two variables in this file:
+ * Summary File Contains HTML output of module
  *
- * $module An instance of your module class.
- * $settings The module's settings.
+ * Description HTML code for the module.
  *
- * Example:
+ * @since 1.0.0
+ *
+ * @package vc-icon-list
  */
 
 $items = $settings->list_field;
@@ -28,9 +28,9 @@ if ( is_array( $items ) && count( $items ) ) { ?>
 
 		<?php if ( 'image' == $settings->select_type ) { ?>
 
-			<div class="vc-row-content-image">
+			<div class="vc-row-content-image" 
 
-					<img class="vc-row-image-style" src="<?php echo $settings->image_field_src; ?>">
+			style="background-image: url('<?php echo $settings->image_field_src; ?>')">
 
 			</div>
 
@@ -38,17 +38,12 @@ if ( is_array( $items ) && count( $items ) ) { ?>
 
 		<?php if ( 'number' == $settings->select_type ) { ?>
 
-			<div class="vc-row-content-number vc-row-number-style">
+			<div class="vc-row-content-number">			
+
 			<?php
 
-			if ( $num == '' ) {
 				$num = $settings->number_field;
-				echo $num;
-				$num++;
-			} else {
-				echo $num;
-				$num++;
-			}
+				echo $num + $i;
 
 			?>
 			</div>
@@ -57,8 +52,8 @@ if ( is_array( $items ) && count( $items ) ) { ?>
 
 		<div class="vc-row-content-item">
 
-		
-				
+
+
 				<?php echo $items[ $i ]; ?>
 
 
@@ -66,12 +61,12 @@ if ( is_array( $items ) && count( $items ) ) { ?>
 
 		</div>
 
-		
-		
+
+
 		<?php } ?>
-		
+
 	</div>
-		
-		
-		
+
+
+
 <?php } ?>
