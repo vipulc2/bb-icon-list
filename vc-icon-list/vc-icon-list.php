@@ -206,7 +206,7 @@ FLBuilder::register_module(
 							'label'      => __( 'Icon Color', 'fl-builder' ),
 							'default'    => '',
 							'show_reset' => true,
-							'show_alpha' => true,
+							'show_alpha' => false,
 							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.vc-row-content-icon',
@@ -356,7 +356,7 @@ FLBuilder::register_module(
 							'label'      => __( 'Number Color', 'fl-builder' ),
 							'default'    => '',
 							'show_reset' => true,
-							'show_alpha' => true,
+							'show_alpha' => false,
 							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.vc-row-content-number',
@@ -367,17 +367,31 @@ FLBuilder::register_module(
 
 
 						// Number Typography Field.
-						'num_typography'          => array(
-							'type'       => 'typography',
-							'label'      => 'Number Typography',
-							'responsive' => true,
-							'preview'    => array(
+						// 'num_typography'          => array(
+						// 'type'       => 'typography',
+						// 'label'      => 'Number Typography',
+						// 'responsive' => true,
+						// 'preview'    => array(
+						// 'type'     => 'css',
+						// 'selector' => '.vc-row-content-number',
+						// ),
+						// ),
+
+						'num_size'                => array(
+							'type'        => 'unit',
+							'label'       => 'Number Size',
+							'description' => 'px',
+							'default'     => 22,
+							'slider'      => true,
+							'preview'     => array(
 								'type'     => 'css',
+								'property' => 'font-size',
 								'selector' => '.vc-row-content-number',
+								'unit'     => 'px',
 							),
 						),
 
-						// Number Padding Field.
+						// Number Width Field.
 						'num_width'               => array(
 							'type'        => 'unit',
 							'label'       => 'Number Width',
@@ -425,7 +439,7 @@ FLBuilder::register_module(
 							'label'      => __( 'Color', 'fl-builder' ),
 							'default'    => '444444',
 							'show_reset' => true,
-							'show_alpha' => true,
+							'show_alpha' => false,
 							'preview'    => array(
 								'type'     => 'css',
 								'property' => 'color',
